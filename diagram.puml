@@ -1,0 +1,47 @@
+@startuml
+
+abstract class Kartya
+class Francia
+class Magyar
+Kartya : size_t col
+Kartya : size_t num
+Kartya : virtual void display()
+Francia : void display()
+Magyar : void display()
+Magyar-|>Kartya
+Francia-|>Kartya
+class Pakli
+Kartya-*Pakli
+
+Pakli : size_t num
+
+Pakli : void peek()
+Pakli : size_t size()
+Pakli : Kartya** kartyak
+Pakli : Kartya** takeTop(size_t)
+Pakli : Kartya* play(size_t)
+Pakli : void newcard(Kartya*)
+Pakli : void shuffle()
+Pakli : Kartya* operator[](size_t)
+
+class Jatekos
+Pakli-*Jatekos
+Jatekos : string nev
+Jatekos : Pakli& kez
+Jatekos : Pakli& vitt
+Jatekos : void elvisz(Pakli&)
+Jatekos : bool hanevNum(size_t)
+Jatekos : size_t count()
+Jatekos : void get(Kartya*)
+
+
+class Zsir
+Jatekos-*Zsir
+Pakli-*Zsir
+Zsir : Pakli& huzopakli
+Zsir : Pakli& hivottlapok
+Zsir : void draw()
+
+
+
+@enduml
